@@ -21,8 +21,6 @@ namespace SportsDatabase
                     Position = "Quarterback",
                     YearsPlayedForTeam = 16,
                     College = "Pittsburgh"
-
-
                 };
 
                 Player drewBrees = new Player
@@ -41,7 +39,6 @@ namespace SportsDatabase
                     Compleations = 4967,
                     CompleationPercentage = 59,
                     Interceptions = 252
-
                 };
                 Stats drewBreesStatsNor = new Stats
                 {
@@ -51,27 +48,21 @@ namespace SportsDatabase
                     Compleations = 5836,
                     CompleationPercentage = 66,
                     Interceptions = 220
-
                 };
-
                 Team mia = new Team
                 {
                     TeamName = "Miami Dolphins",
-                    YearFounded = 1966,
-                   
-
+                    YearFounded = 1966,                  
                 };
                 Team nor = new Team
                 {
                     TeamName = "New Orleans Saints",
-                    YearFounded = 1966,
-                    
-
+                    YearFounded = 1966,                    
                 };
-                Console.WriteLine("Would you like to create a Team, or Player? please type which you would like, or type any key to exit.");
                 bool optionCK = true;
                 while (optionCK)
                 {
+                    Console.WriteLine("Would you like to create a Team, or Player? please type which you would like, or type X to exit.");
                     string chooseAnOption = Console.ReadLine();
 
                     if (chooseAnOption.ToUpper() == "TEAM")
@@ -88,7 +79,6 @@ namespace SportsDatabase
                             YearFounded = teamYearInt,
                         };
                         db.Team.Add(newTeam);
-
                         optionCK = true;
                     }
                     else if (chooseAnOption.ToUpper() == "PLAYER")
@@ -102,31 +92,23 @@ namespace SportsDatabase
                         int playerPlayedProInt = int.Parse(playerPlayedPro);
                         Console.Write($"Please enter the college {playerName} went to.");
                         string playerCollege = Console.ReadLine();
-
                         optionCK = true;
 
                         Player newPlayer = new Player
                         {
-
                             Name = playerName,
                             Position = playerPos,
                             YearsPlayedForTeam = playerPlayedProInt,
                             College = playerCollege
-
                         };
+
                         db.Player.Add(newPlayer);
                     }
-                    else
+                    else if (chooseAnOption.ToUpper() == "X")
                     {
                         optionCK = false;
-                    }
-                }
-               
-
-                
-                //db.Team.Add(newTeam);
-                //db.Player.Add(newPlayer);
-                //db.Stats.Add(drewBreesStatsNor);
+                    }                  
+                }                
                 db.SaveChanges();
             }
 
